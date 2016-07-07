@@ -9,41 +9,22 @@
 <body>
 <h1>自分のツイートを検索</h1>
 <p>直近200件のツイートから探したいワードで検索！</p>
-<form action="myresult.php" method="post">
-    <input type="radio" name="user" value="1"{$checked["test_c"][1]}>自分のツイート
-    <input type="radio" name="user" value="2"{$checked["test_c"][2]}>自分のTL
-    
-    <input type="text" name='tweet'>
+<form action="myresult" method="post">
+    <input type="radio" name="user" value="1">自分のツイート
+    <input type="radio" name="user" value="2">自分のTL
+    <input type="search" name='tweet' placeholder="キーワード">
     <input type="submit" value="検索">
 </form>
 
-
-
-<h1>もっと読む</h1>
-<ul id="tweets">
+<ul id="tweets" class="tweet-list">
 </ul>
 
 <p id="loading" style="display:none;">loading...</p>
-<!-- <input type="button" id="more" value="もっと読む"> -->
+
 <script>
 
 $(function() {
-/*	$('#more').click(function() {
-		$('#loading').show();
-		
-		if ($('#tweets > li ').length) {
-			var max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
-		}
-	console.log(max_id);
-		$.get('more.php', {
-			max_id: max_id
-		}, function(rs) {
-			$('#loading').hide();
-			$(rs).appendTo('#tweets');
-		});
 
-	});
-*/
 	var max_id;
 	
 	$(window).scroll(function() {
@@ -59,11 +40,11 @@ $(function() {
 			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
 		}
 		
-		$.get('more.php', {
+		$.get('myresult.php', {
 			max_id: max_id
-		}, function(res) {
+		}, function(rs) {
 			$('#loading').hide();
-			$(res).appendTo('#tweets');
+			$(rs).appendTo('#tweets');
 		});
 	}
 	
@@ -73,6 +54,24 @@ $(function() {
 
 </script>
 
+<style type="text/css">
+
+.tweet-list {
+	width: 80%;
+	margin: 20px auto;
+	padding: 0;
+	list-style: none;
+}
+
+.tweet-list > li {
+	margin-bottom: 10px;
+	padding: 10px;
+	line-height: 1.4;
+	background-color: #C8F0F7;
+	border-radius: 20px;
+}
+
+</style>
 
 </body>
 </html>

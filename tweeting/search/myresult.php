@@ -17,23 +17,23 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 $user = $connection->get("account/verify_credentials");
 //(ここらへんは、Twitter の API ドキュメントをうまく使ってください)
 
-$tweeting = $_POST['tweet'];
-
+if(isset($_SESSION['tweet'])) {
+	$search = $_SESSION['tweet'];
+}
 $params = array();
 
-$search = $tweeting;
-
-if(isset($tweeting)) {
+if(isset($search)) {
 
 	try{
-		$params['count'] = 21;	
-		if(isset($endtweet)) {
-			$params['max_id'] = $endtweet;
+		if(isset($_GET['max_id'])) {
+			$params['max_id'] = $_GET['max_id'];
+			$params['count'] = 51;
 			if($_SESSION["user"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
 			}else if($_SESSION["user"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
+			array_shift($res);
 		}else{
 			if($_SESSION["user"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);

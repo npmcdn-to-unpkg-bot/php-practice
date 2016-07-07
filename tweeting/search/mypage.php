@@ -21,8 +21,9 @@ session_start();
 </form>
 
 <?php
-if(isset($_POST['user'])) {
+if(isset($_POST['user']) || isset($_POST['tweet'])) {
 $_SESSION['user'] = $_POST['user'];
+$_SESSION['tweet'] = $_POST['tweet'];
 }
 ?>
 
@@ -52,9 +53,9 @@ $(function() {
 		
 		$.get('myresult.php', {
 			max_id: max_id
-		}, function(rs) {
+		}, function(res) {
 			$('#loading').hide();
-			$(rs).appendTo('#tweets');
+			$(res).appendTo('#tweets');
 		});
 	}
 	

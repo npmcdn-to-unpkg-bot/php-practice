@@ -30,4 +30,4 @@ $_SESSION['access_token'] = $connection->oauth("oauth/access_token", array("oaut
 session_regenerate_id();
 
 //マイページへリダイレクト
-header( 'location: http://localhost/php-practice/practice_q/tweeting/mypage.php' );
+header( 'location: http://localhost/php-practice_git/tweeting/search/mypage.php' );

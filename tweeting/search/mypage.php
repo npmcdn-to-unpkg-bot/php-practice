@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>twitterを見てみる</title>
+<script src="jquery-3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -15,7 +16,6 @@
     <input type="text" name='tweet'>
     <input type="submit" value="検索">
 </form>
-
 
 </body>
 </html>

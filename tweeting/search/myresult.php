@@ -81,6 +81,56 @@ $_SESSION['endtweet'] = $endtweet;
 
 </ul>
 
+<p id="loading" style="display:none;">loading...</p>
+<!-- <input type="button" id="more" value="もっと読む"> -->
+<script>
+
+$(function() {
+/*	$('#more').click(function() {
+		$('#loading').show();
+		
+		if ($('#tweets > li ').length) {
+			var max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
+		}
+	console.log(max_id);
+		$.get('more.php', {
+			max_id: max_id
+		}, function(rs) {
+			$('#loading').hide();
+			$(rs).appendTo('#tweets');
+		});
+
+	});
+*/
+	var max_id;
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+			more();
+		}
+	});
+	
+	function more() {
+		$('#loading').show();
+		
+		if ($('tweets > li').length) {
+			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
+		}
+		
+		$.get('more.php', {
+			max_id: max_id
+		}, function(res) {
+			$('#loading').hide();
+			$(res).appendTo('#tweets');
+		});
+	}
+	
+	more();
+	
+});
+
+</script>
+
 <style type="text/css">
 
 .tweet-list {

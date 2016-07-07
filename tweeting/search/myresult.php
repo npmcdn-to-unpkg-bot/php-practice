@@ -80,7 +80,8 @@ $_SESSION['endtweet'] = $endtweet;
 ?>
 
 </ul>
-t/css">
+
+<style type="text/css">
 
 .tweet-list {
 	width: 80%;

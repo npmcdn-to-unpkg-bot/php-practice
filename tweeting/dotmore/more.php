@@ -21,10 +21,10 @@ $params = array(
 if(isset($_GET['max_id'])) {
 	$params['max_id'] = $_GET['max_id'];
 	$params['count'] = 21;	
-	$tweets = (array )$connection->get('statuses/user_timeline', $params);
+	$tweets = (array)$connection->get('statuses/user_timeline', $params);
 	array_shift($tweets);
-}else{
-$tweets = (array )$connection->get('statuses/user_timeline', $params);
+} else {
+	$tweets = (array)$connection->get('statuses/user_timeline', $params);
 }
 
 array_pop($tweets);

@@ -22,8 +22,8 @@ session_start();
 
 <?php
 if(isset($_POST['user']) || isset($_POST['tweet'])) {
-$_SESSION['user'] = $_POST['user'];
-$_SESSION['tweet'] = $_POST['tweet'];
+	$_SESSION['user'] = $_POST['user'];
+	$_SESSION['tweet'] = $_POST['tweet'];
 }
 ?>
 
@@ -47,22 +47,21 @@ $(function() {
 	function more() {
 		$('#loading').show();
 		
-		if ($('tweets > li').length) {
+		if ($('#tweets > li').length) {
 			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
 		}
 		
 		$.get('myresult.php', {
 			max_id: max_id
-		}, function(res) {
+		}, function(rs) {
 			$('#loading').hide();
-			$(res).appendTo('#tweets');
+			$(rs).appendTo('#tweets').hide().fadeIn(800);
 		});
 	}
 	
 	more();
 	
 });
-
 </script>
 
 <style type="text/css">

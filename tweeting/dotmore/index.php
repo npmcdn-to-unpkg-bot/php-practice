@@ -9,7 +9,7 @@
 <body>
 <h1>自分のツイートを検索</h1>
 <p>直近200件のツイートから探したいワードで検索！</p>
-<form action="myresult.php" method="post">
+<form action="index.php" method="post">
     <input type="radio" name="user" value="1"{$checked["test_c"][1]}>自分のツイート
     <input type="radio" name="user" value="2"{$checked["test_c"][2]}>自分のTL
     
@@ -24,15 +24,18 @@
 </ul>
 
 <p id="loading" style="display:none;">loading...</p>
-<!-- <input type="button" id="more" value="もっと読む"> -->
+<!--<input type="button" id="more" value="もっと読む">-->
 <script>
 
 $(function() {
-/*	$('#more').click(function() {
+/*
+	var max_id;
+
+	$('#more').click(function() {
 		$('#loading').show();
 		
 		if ($('#tweets > li ').length) {
-			var max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
+			max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
 		}
 	console.log(max_id);
 		$.get('more.php', {
@@ -43,6 +46,7 @@ $(function() {
 		});
 
 	});
+});
 */
 	var max_id;
 	
@@ -55,15 +59,15 @@ $(function() {
 	function more() {
 		$('#loading').show();
 		
-		if ($('tweets > li').length) {
+		if ($('#tweets > li').length) {
 			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
 		}
 		
 		$.get('more.php', {
 			max_id: max_id
-		}, function(res) {
+		}, function(rs) {
 			$('#loading').hide();
-			$(res).appendTo('#tweets');
+			$(rs).appendTo('#tweets').hide().fadeIn(800);
 		});
 	}
 	

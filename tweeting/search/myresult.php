@@ -23,21 +23,21 @@ if(isset($_SESSION['tweet'])) {
 $params = array();
 
 if(isset($search)) {
-
+var_dump($_GET['max_id']);
 	try{
 		if(isset($_GET['max_id'])) {
 			$params['max_id'] = $_GET['max_id'];
-			$params['count'] = 51;
+			$params['count'] = 21;	
 			if($_SESSION["user"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
-			}else if($_SESSION["user"] == "2") {
+			} else if($_SESSION["user"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 			array_shift($res);
-		}else{
+		} else {
 			if($_SESSION["user"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
-			}else if($_SESSION["user"] == "2") {
+			} else if($_SESSION["user"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 		}
@@ -46,14 +46,15 @@ if(isset($search)) {
 		echo $e->getMessage();
 	}
 	
-	
 	array_pop($res);
 	
 	foreach ($res as $tweet) {
-		$TLuser = $tweet->id_str;
+		$TLid = $tweet->id_str;
+		$TLname = $tweet->user->name;
+		$TLscreen = $tweet->user->screen_name;
 		$TLtweet = $tweet->text;
 		if(strstr($TLtweet, $search)) {
-			echo '<li id="tweet_' . $TLuser . '">' . $TLtweet . '</li>';
+			echo '<li id="tweet_' . $TLid . '">' .$TLname . " : @". $TLscreen ."<br>" . $TLtweet . '</li>';
 		}
 	}
 

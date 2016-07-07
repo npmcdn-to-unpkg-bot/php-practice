@@ -1,0 +1,26 @@
+/* CSS Document */
+
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, p, table, form, fieldset, input, select, blockquote, table, th, tr, td, address, iframe {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	font-size: 62.5%;
+	color: #000;
+	background: #fff;
+	text-align: center;
+}
+
+#topcontainer {
+	margin: 40px auto 20px auto;
+	width: 600px;
+}
+
+#testdisplay {
+	padding: 10px;
+	border: 2px dashed #666;
+	font-size: 1.6em;
+	line-height: 2em;
+	display: none;
+}

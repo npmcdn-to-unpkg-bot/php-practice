@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<title>AJAXによるPHP読み込み</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="jquery-3.0.0.min.js"></script>
+<script language="JavaScript">
+$(document).ready(function(){
+	function displayTweet()
+	{
+		$("#testdisplay").load("getDate.php").fadeIn(2000);
+	}
+	$.get("getDate.php",{},displayTweet);
+	function autoRefresh(interval){
+		autoloader = setInterval(displayTweet,interval);
+	}
+	autoRefresh(10000);
+});
+</script>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="topcontainer">
+<div id="testdisplay">
+
+</div>
+</div>
+
+</body>
+</html>

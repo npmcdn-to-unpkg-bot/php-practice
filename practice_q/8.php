@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>無題ドキュメント</title>
+</head>
+
+<body>
+
+<?php
+
+function tasuichi($a){
+        print ($a+1);
+}
+tasuichi(1);
+
+?>
+
+</body>
+</html>

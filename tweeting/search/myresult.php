@@ -16,26 +16,33 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 //ユーザー情報をGET
 $user = $connection->get("account/verify_credentials");
 //(ここらへんは、Twitter の API ドキュメントをうまく使ってください)
+$tweet =  $_SESSION['tweet'];
 
-if(isset($_SESSION['tweet'])) {
-	$search = $_SESSION['tweet'];
+if($tweet !== "") {
+	$search = htmlspecialchars($tweet);
+	$id_get = htmlspecialchars($_GET['get_id']);
+	var_dump($id_get);
+	var_dump($search);
+} else {
+	die("検索ワード入れてくれ！");
 }
 $params = array();
 
+
 if(isset($search)) {
-var_dump($_GET['max_id']);
+	
 	try{
-		if(isset($_GET['max_id'])) {
-			$params['max_id'] = $_GET['max_id'];
-			$params['count'] = 21;	
-			if($_SESSION["user"] == "1") {	
+		if(isset($id_get)) {
+			$params['max_id'] = $id_get;
+			$params['count'] = 51;	
+			if($_SESSION["radio"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
 			} else if($_SESSION["user"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 			array_shift($res);
 		} else {
-			if($_SESSION["user"] == "1") {	
+			if($_SESSION["radio"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
 			} else if($_SESSION["user"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);

@@ -14,15 +14,15 @@ session_start();
 <h1>自分のツイートを検索</h1>
 
 <form action="mypage.php" method="post">
-    <input type="radio" name="user" value="1">自分のツイート
-    <input type="radio" name="user" value="2">自分のTL
+    <input type="radio" name="radio" value="1">自分のツイート
+    <input type="radio" name="radio" value="2">自分のTL
     <input type="search" name="tweet" placeholder="キーワード">
     <input type="submit" name="button" value="検索">
 </form>
 
 <?php
-if(isset($_POST['user']) || isset($_POST['tweet'])) {
-	$_SESSION['user'] = $_POST['user'];
+if(isset($_POST['radio'])){
+	$_SESSION['radio'] = $_POST['radio'];
 	$_SESSION['tweet'] = $_POST['tweet'];
 }
 ?>
@@ -51,8 +51,8 @@ $(function() {
 			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
 		}
 		
-		$.get('myresult.php', {
-			max_id: max_id
+		$.get("myresult.php", {
+			get_id : max_id
 		}, function(rs) {
 			$('#loading').hide();
 			$(rs).appendTo('#tweets').hide().fadeIn(800);

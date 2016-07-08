@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>div puzzle1</title>
+<link rel="stylesheet" type="text/css" href="reset.css">
+</head>
+
+<body>
+
+<div class="clearfix header"></div>
+<div class="clearfix content">
+	<div class="left-content"></div>
+    <div class="right-content"></div>
+</div>
+<div class="footer"></div>
+
+
+</body>
+</html>
+
+<style type="text/css">
+.clearfix {
+	content: "";
+	clear: both;
+	display: block;
+}
+body {
+	width: 400px;
+}
+
+.header {
+	height: 100px;
+	margin: 0 auto;
+	background-color: #141f40;
+}
+
+.content {
+	height: 250px;
+}
+.left-content {
+	width: 150px;
+	height: 100%;
+	float: left;
+	background-color: #80bfa8;
+}
+.right-content {
+	width: 250px;
+	height: 100%;
+	float: left;
+	background-color: #8c2727;
+}
+
+.footer {
+	height: 100px;
+	background-color: #d98d30;
+}
+
+</style>

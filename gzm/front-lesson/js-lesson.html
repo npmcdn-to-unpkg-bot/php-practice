@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>JavaScript Lesson</title>
+</head>
+
+<body>
+<script>
+//Quetion1
+
+var userList = [
+  {
+    name: 'arata',
+    age: 26,
+    favorites: [
+      'Card Game',
+      'Basket Ball',
+      'Programming'
+    ]
+  },
+  {
+    name: 'watanabe',
+    age: 83,
+    favorites: [
+      'Tinder',
+      'The Legend of Zelda'
+    ]
+  },
+  {
+    name: 'totani',
+    age: 23,
+    favorites: [
+      'Football',
+      'Smash Bros.'
+    ]
+  }
+];
+
+console.log(userList[1].favorites[1]);
+
+
+//Quetion2
+
+var calc = {
+
+	add: function (x, y) {
+	  return x + y;
+	},
+	subtract: function(x, y) {
+	  return x - y;
+	},
+	multiply: function (x, y) {
+	  return x * y;
+	},
+	divide: function (x, y) {
+	  return x / y;
+	}
+};
+
+console.log(calc.add(1,4));
+console.log(calc.subtract(6,4));
+console.log(calc.multiply(3,4));
+console.log(calc.divide(12,4));
+
+//Quetion3
+
+var nameList = ['arata', 'watanabe', 'totani', 'shibue'];
+
+for(var i = 0; i < nameList.length; i++) {
+	console.log(nameList[i]);
+}
+
+//Quetion4
+
+var sequence = [];
+// 処理
+for(var i = 0; i < 5; i++) {
+	sequence[i] = Math.pow(10, i);
+}
+console.log(sequence); // [1, 10, 100, 1000, 10000]
+
+//Quetion5
+
+var proverbArray = ['犬も', '歩けば', '棒に', '当たる'];
+var proverb = '';
+// 処理
+for(var i = 0; i < proverbArray.length; i++) {
+	proverb += proverbArray[i];
+}
+
+console.log(proverb); // '犬も歩けば棒に当たる'
+
+</script>
+
+
+</body>
+</html>

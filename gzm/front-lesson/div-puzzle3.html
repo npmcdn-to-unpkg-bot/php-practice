@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>div puzzle3</title>
+<link rel="stylesheet" type="text/css" href="reset.css">
+</head>
+
+<body>
+
+<div class="clearfix header">
+	<ul class="gnav">
+    	<li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="clearfix content">
+	<div class="left-content"></div>
+    <div class="right-content">
+        <ul class="menu">
+            <li><div class="menu-content"></div></li>
+            <li><div class="menu-content"></div></li>
+            <li><div class="menu-content"></div></li>
+        </ul>
+    </div>
+</div>
+<div class="footer"></div>
+
+
+</body>
+</html>
+
+<style type="text/css">
+.clearfix {
+	content: "";
+	clear: both;
+	display: block;
+}
+body {
+	width: 400px;
+}
+
+.header {
+	height: 100px;
+	margin: 0 auto;
+	background-color: #141f40;
+}
+.gnav {
+	width: 160px;
+	height: 60px;
+	float: right;
+	margin: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	list-style: none;
+	font-size: 0;
+	background-color: #fff;
+}
+.gnav > li {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	margin-left: 10px;
+	background-color: #a9004b;
+}
+.gnav > li:first-child { margin: 0; }
+
+.content { height: 250px; }
+.left-content {
+	width: 150px;
+	height: 100%;
+	float: left;
+	background-color: #80bfa8;
+}
+.right-content {
+	position: relative;
+	width: 250px;
+	height: 100%;
+	float: left;
+	background-color: #8c2727;
+}
+.menu {
+	position: absolute;
+	top:40px;
+	left: 40px;
+}
+.menu > li {
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 5px;
+}
+.menu > li:first-child { margin: 0; }
+.menu > li div {
+	width: 140px;
+	height: 40px;
+	background-color: #ff863f;
+}
+
+.footer {
+	width: 100%;
+	height: 100px;
+	background-color: #d98d30;
+}
+
+</style>

@@ -12,7 +12,7 @@ session_start();
 
 <body>
 <h1>自分のツイートを検索</h1>
-<p>直近200件のツイートから探したいワードで検索！</p>
+
 <form action="mypage.php" method="post">
     <input type="radio" name="user" value="1">自分のツイート
     <input type="radio" name="user" value="2">自分のTL

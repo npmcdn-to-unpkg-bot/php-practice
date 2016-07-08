@@ -18,11 +18,11 @@ $user = $connection->get("account/verify_credentials");
 //(ここらへんは、Twitter の API ドキュメントをうまく使ってください)
 $tweet =  $_SESSION['tweet'];
 
-if($tweet !== "") {
+if(isset($tweet)) {
 	$search = htmlspecialchars($tweet);
 	$id_get = htmlspecialchars($_GET['get_id']);
-	var_dump($id_get);
 	var_dump($search);
+	var_dump($id_get);
 } else {
 	die("検索ワード入れてくれ！");
 }
@@ -37,14 +37,14 @@ if(isset($search)) {
 			$params['count'] = 51;	
 			if($_SESSION["radio"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
-			} else if($_SESSION["user"] == "2") {
+			} else if($_SESSION["radio"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 			array_shift($res);
 		} else {
 			if($_SESSION["radio"] == "1") {	
 				$res = (array )$connection->get('statuses/user_timeline', $params);
-			} else if($_SESSION["user"] == "2") {
+			} else if($_SESSION["radio"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 		}

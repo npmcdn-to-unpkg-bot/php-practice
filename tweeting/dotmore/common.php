@@ -2,5 +2,5 @@
 
 define( 'CONSUMER_KEY', 'riqXgVrqXGIOEfH4AGvYEEOSo');
 define( 'CONSUMER_SECRET', 'pcF4jU9Cq8gUt4ZAd7JYedovTNXTh7Mr0m9UP3hDppCnSq6OFq');
-
-define('OAUTH_CALLBACK', 'http://localhost/php-practice_git/tweeting/search/callback.php');
+define('ACCESS_TOKEN', '152981346-QZ2vdLUH6dg5L8dM9jcDWwS9MCdbzgI24NJhiZlW');
+define('ACCESS_TOKEN_SECRET', 'hCcAwWqCOotPRQW0rR5OujTVIcqmvror7ea9D7vutxcXk');

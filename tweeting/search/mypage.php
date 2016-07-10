@@ -7,7 +7,7 @@ session_start();
 <head>
 <meta charset="utf-8">
 <title>twitterを見てみる</title>
-<script src="jquery-3.0.0.min.js"></script>
+<script src="./jquery-3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -31,37 +31,60 @@ if(isset($_POST['radio'])){
 </ul>
 
 <p id="loading" style="display:none;">loading...</p>
-
+<input type="button" id="more" value="もっと読む">
 <script>
 
 $(function() {
 
 	var max_id;
-	
+
+	$('#more').click(function() {
+		$('#loading').show();
+
+		if ($('#tweets > li ').length) {
+			max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
+		}
+	console.log(max_id);
+		$.get('myresult.php', {
+			max_id: max_id
+		}, function(rs) {
+			$('#loading').hide();
+			$(rs).appendTo('#tweets');
+		});
+
+	});
+});
+
+/*
+$(function() {
+
+	var max_id;
+
 	$(window).scroll(function() {
 		if ($(window).scrollTop() + $(window).height() == $(document).height()) {
 			more();
 		}
 	});
-	
+
 	function more() {
 		$('#loading').show();
-		
+
 		if ($('#tweets > li').length) {
 			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
 		}
-		
+
 		$.get("myresult.php", {
-			get_id : max_id
-		}, function(rs) {
+			max_id : max_id
+		}, function(res) {
 			$('#loading').hide();
-			$(rs).appendTo('#tweets').hide().fadeIn(800);
+			$(res).appendTo('#tweets').hide().fadeIn(800);
 		});
 	}
-	
+
 	more();
-	
+
 });
+*/
 </script>
 
 <style type="text/css">

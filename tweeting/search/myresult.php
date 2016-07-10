@@ -30,31 +30,31 @@ $params = array();
 
 
 if(isset($search)) {
-	
+
 	try{
 		if(isset($id_get)) {
 			$params['max_id'] = $id_get;
-			$params['count'] = 51;	
-			if($_SESSION["radio"] == "1") {	
+			$params['count'] = 51;
+			if($_SESSION["radio"] == "1") {
 				$res = (array )$connection->get('statuses/user_timeline', $params);
 			} else if($_SESSION["radio"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 			array_shift($res);
 		} else {
-			if($_SESSION["radio"] == "1") {	
+			if($_SESSION["radio"] == "1") {
 				$res = (array )$connection->get('statuses/user_timeline', $params);
 			} else if($_SESSION["radio"] == "2") {
 				$res = (array )$connection->get('statuses/home_timeline', $params);
 			}
 		}
-	
+
 	} catch (TwistException $e) {
 		echo $e->getMessage();
 	}
-	
+
 	array_pop($res);
-	
+
 	foreach ($res as $tweet) {
 		$TLid = $tweet->id_str;
 		$TLname = $tweet->user->name;

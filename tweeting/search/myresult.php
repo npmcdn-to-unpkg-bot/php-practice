@@ -17,35 +17,34 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 $user = $connection->get("account/verify_credentials");
 //(ここらへんは、Twitter の API ドキュメントをうまく使ってください)
 $tweet =  $_SESSION['tweet'];
-
-if(isset($tweet)) {
+if(isset($tweet)){
 	$search = htmlspecialchars($tweet);
-	$id_get = htmlspecialchars($_GET['get_id']);
 	var_dump($search);
-	var_dump($id_get);
-} else {
-	die("検索ワード入れてくれ！");
 }
+
+	$max_id = htmlspecialchars($_GET['max_id']);
+	var_dump($max_id);
+
 $params = array();
 
 
 if(isset($search)) {
 
 	try{
-		if(isset($id_get)) {
-			$params['max_id'] = $id_get;
+		if(isset($max_id)) {
+			$params['max_id'] = $max_id;
 			$params['count'] = 51;
 			if($_SESSION["radio"] == "1") {
-				$res = (array )$connection->get('statuses/user_timeline', $params);
+				$tweets = (array )$connection->get('statuses/user_timeline', $params);
 			} else if($_SESSION["radio"] == "2") {
-				$res = (array )$connection->get('statuses/home_timeline', $params);
+				$tweets = (array )$connection->get('statuses/home_timeline', $params);
 			}
-			array_shift($res);
+			array_shift($tweets);
 		} else {
 			if($_SESSION["radio"] == "1") {
-				$res = (array )$connection->get('statuses/user_timeline', $params);
+				$tweets = (array )$connection->get('statuses/user_timeline', $params);
 			} else if($_SESSION["radio"] == "2") {
-				$res = (array )$connection->get('statuses/home_timeline', $params);
+				$tweets = (array )$connection->get('statuses/home_timeline', $params);
 			}
 		}
 
@@ -53,13 +52,13 @@ if(isset($search)) {
 		echo $e->getMessage();
 	}
 
-	array_pop($res);
+	array_pop($tweets);
 
-	foreach ($res as $tweet) {
-		$TLid = $tweet->id_str;
-		$TLname = $tweet->user->name;
-		$TLscreen = $tweet->user->screen_name;
-		$TLtweet = $tweet->text;
+	foreach ($tweets as $tweeting) {
+		$TLid = $tweeting->id_str;
+		$TLname = $tweeting->user->name;
+		$TLscreen = $tweeting->user->screen_name;
+		$TLtweet = $tweeting->text;
 		if(strstr($TLtweet, $search)) {
 			echo '<li id="tweet_' . $TLid . '">' .$TLname . " : @". $TLscreen ."<br>" . $TLtweet . '</li>';
 		}

@@ -7,7 +7,7 @@ session_start();
 <head>
 <meta charset="utf-8">
 <title>twitterを見てみる</title>
-<script src="./jquery-3.0.0.min.js"></script>
+<script src="./jquery-1.10.1.min.js"></script>
 </head>
 
 <body>
@@ -31,9 +31,9 @@ if(isset($_POST['radio'])){
 </ul>
 
 <p id="loading" style="display:none;">loading...</p>
-<input type="button" id="more" value="もっと読む">
+<!-- <input type="button" id="more" value="もっと読む"> -->
 <script>
-
+/*
 $(function() {
 
 	var max_id;
@@ -55,7 +55,7 @@ $(function() {
 	});
 });
 
-/*
+*/
 $(function() {
 
 	var max_id;
@@ -67,24 +67,27 @@ $(function() {
 	});
 
 	function more() {
-		$('#loading').show();
+		$("#loading").show();
 
 		if ($('#tweets > li').length) {
-			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
+			max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
 		}
 
-		$.get("myresult.php", {
-			max_id : max_id
-		}, function(res) {
+	console.log(max_id);
+		$.get('myresult.php', {
+			'max_id': max_id
+		}, function(rs) {
 			$('#loading').hide();
-			$(res).appendTo('#tweets').hide().fadeIn(800);
+			$(rs).appendTo('#tweets').hide().fadeIn(800);
 		});
 	}
 
 	more();
 
 });
-*/
+
+
+
 </script>
 
 <style type="text/css">

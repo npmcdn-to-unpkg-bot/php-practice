@@ -13,11 +13,11 @@
 </ul>
 
 <p id="loading" style="display:none;">loading...</p>
-<input type="button" id="more" value="もっと読む">
+<!-- <input type="button" id="more" value="もっと読む"> -->
 <script>
 
 $(function() {
-
+/*
 	var max_id;
 
 	$('#more').click(function() {
@@ -36,7 +36,7 @@ $(function() {
 
 	});
 });
-/*
+*/
 	var max_id;
 
 	$(window).scroll(function() {
@@ -49,23 +49,22 @@ $(function() {
 		$("#loading").show();
 
 		if ($('#tweets > li').length) {
-			max_id = $('#tweets > li:last').attr('id').replace(/~tweet_/, '');
+			max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
 		}
 
-		console.log(more());
-
+	console.log(max_id);
 		$.get('more.php', {
 			max_id: max_id
 		}, function(rs) {
 			$('#loading').hide();
-			$(rs).appendTo('#tweets');
+			$(rs).appendTo('#tweets').hide().fadeIn(800);
 		});
 	}
 
 	more();
 
 });
-*/
+
 </script>
 
 

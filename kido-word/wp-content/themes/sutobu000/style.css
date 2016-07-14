@@ -1,0 +1,297 @@
+/*
+Theme Name: sutobu000
+Author: KidoYuta
+Author URI: sutobu000.com
+Description: sutobu00のテーマ
+*/
+
+/*------------------------------------------------------------------------
+Base
+------------------------------------------------------------------------*/
+html,body {
+  height: 100%;
+}
+body {
+  width: 100%;
+  color: #333;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #eee;
+}
+a, p { color: #333; }
+a:visited { color: #333; }
+.clearfix {
+  display: block;
+  clear: both;
+  content: '';
+}
+img { vertical-align: bottom; }
+/*------------------------------------------------------------------------
+border
+------------------------------------------------------------------------*/
+html:before,
+html:after,
+body:before,
+body:after {
+  content: "";
+  margin: 0px;
+  background: #CCC;
+  position: fixed;
+  display: block;
+  z-index: 20;
+}
+html:before {
+  height: 20px;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+html:after {
+  width: 20px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+body:before {
+  height: 20px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+body:after {
+  width: 20px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/*------------------------------------------------------------------------
+common layout
+------------------------------------------------------------------------*/
+.header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  margin-left:-180px;
+  padding-top: 20px;
+  z-index: 999;
+}
+.topnav > li {
+  display: inline-block;
+  margin-left: 25px;
+}
+.topnav > li:first-child { margin-left: 0; }
+.gnav {
+  text-decoration: none;
+  transition: 0.1s;
+}
+
+.wrapper {
+  padding: 100px 20px 20px;
+}
+
+.copyright {
+  position: fixed;
+  bottom: 25px;
+  left: 5px;
+  z-index: 99;
+  -webkit-writing-mode: vertical-rl;
+}
+
+.btnpagetop {
+  position: fixed;
+  bottom: 10px;
+  right: 45px;
+  z-index: 99;
+}
+.btnpagetop:hover {
+  bottom: 11px;
+}
+
+/*------------------------------------------------------------------------
+index layout
+------------------------------------------------------------------------*/
+
+.wrapper {
+  padding: 150px 20px 20px;
+}
+.title {
+  text-align: center;
+}
+.titlename {
+  display: inline-block;
+  margin-bottom: 30px;
+  font-size: 250%;
+  letter-spacing: 10px;
+}
+.titlelink {
+  text-decoration: none;
+}
+.caption {
+  margin-bottom: 30px;
+  font-size: 100%;
+}
+.logo {
+
+}
+.topmain {
+  width: 100%;
+  height: 1920px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.inner {
+  position: relative;
+}
+
+/*--image--*/
+.item01 {
+  position: absolute;
+  top: 300px;
+  left: 20px;
+}
+.item02 {
+  position: absolute;
+  top: 800px;
+  right: 50px;
+}
+.item03 {
+  position: absolute;
+  top: 1200px;
+  right: 300px;
+}
+.item04 {
+  position: absolute;
+  top: 1500px;
+  right: 10px;
+}
+.item05 {
+  position: absolute;
+  top: 1700px;
+  right: 500px;
+}
+
+/*------------------------------------------------------------------------
+profile layout
+------------------------------------------------------------------------*/
+
+.logo {
+  margin: 60px 0 50px;
+  text-align: center;
+}
+.logo-img {
+}
+.profile-main {
+  width: 50%;
+  margin: 0 auto;
+}
+.profile-name {
+  font-size: 100%;
+}
+.myname {
+  margin-bottom: 40px;
+  font-size: 15px;
+  letter-spacing: 2.5px;
+}
+.text1,
+.text2 {
+  line-height: 25px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.text2 { margin:50px 0 ; }
+    {CustomCSS}
+
+/*------------------------------------------------------------------------
+work layout
+------------------------------------------------------------------------*/
+
+.worksSub {
+  width: 35%;
+  margin: 100px auto 50px;
+  font-size: 100%;
+  line-height: 17px;
+  text-align: center;
+}
+.worksSub > h1 {
+  margin-bottom: 10px;
+}
+
+/*--works layout--*/
+.worksMain {
+  position: relative;
+  display: block;
+  width: 50%;
+  height: 80%;
+  margin: 0 auto;
+}
+.worksMain > li {
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+.worksMain > li:first-child {
+  margin-top: 0;
+}
+/*------------------------------------------------------------*/
+.worksMain > li:nth-last-child(1) {
+  background-image: url(http://static.tumblr.com/oukifcw/nQco5cuju/niconicotopimg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.worksMain > li:nth-last-child(2) {
+  background-image: url(http://static.tumblr.com/oukifcw/R7yo5cujj/campus.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.worksMain > li:nth-last-child(3) {
+  background-image: url(http://static.tumblr.com/oukifcw/lGBo5cuk2/vvvvtut.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/*------------------------------------------------------------*/
+.worksBoxlink {
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+}
+.worksBox {
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  background-color: #bbb;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: #fff;
+}
+
+.worksBox > h1 {
+  position: absolute;
+  right: 15px;
+  text-decoration: none;
+}
+
+/*------------------------------------------------------------------------
+contact layout
+------------------------------------------------------------------------*/
+
+.contactMain {
+  width: 35%;
+  margin: 50px auto 0 ;
+}
+.contactSub {
+  font-size: 100%;
+  line-height: 50px;
+}
+
+.content-text {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+.portfolio > span {
+  font-size: 10px;
+}

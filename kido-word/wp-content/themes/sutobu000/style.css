@@ -71,7 +71,7 @@ common layout
   position: fixed;
   top: 20px;
   left: 50%;
-  margin-left:-180px;
+  margin-left:-215px;
   padding-top: 20px;
   z-index: 999;
 }
@@ -231,26 +231,13 @@ work layout
   height: 100px;
   margin-top: 50px;
   border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .worksMain > li:first-child {
   margin-top: 0;
 }
-/*------------------------------------------------------------*/
-.worksMain > li:nth-last-child(1) {
-  background-image: url(http://static.tumblr.com/oukifcw/nQco5cuju/niconicotopimg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.worksMain > li:nth-last-child(2) {
-  background-image: url(http://static.tumblr.com/oukifcw/R7yo5cujj/campus.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.worksMain > li:nth-last-child(3) {
-  background-image: url(http://static.tumblr.com/oukifcw/lGBo5cuk2/vvvvtut.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 /*------------------------------------------------------------*/
 .worksBoxlink {
   display: inline-block;

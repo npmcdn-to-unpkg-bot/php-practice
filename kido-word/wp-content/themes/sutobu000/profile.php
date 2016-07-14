@@ -1,39 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>profile</title>
-<link href='https://fonts.googleapis.com/css?family=Quicksand:400,700,300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/base.css">
-<link rel="shortcut icon" href="../img/Dotmame.png">
+<?php
+/*
+Template Name: profile
+*/
+?>
 
-</head>
-
-<body>
- <div class="header">
-    <ul class="topnav">
-      <li>
-        <a class="gnav top00" href="../index.html">home</a>
-      </li>
-      <li>
-        <a class="gnav top01" href="./profile.html">profile</a>
-      </li>
-      <li>
-        <a class="gnav top02" href="../work/work.html">works</a>
-      </li>
-      <li>
-        <a class="gnav top03" href="../contact/contact.html">contact</a>
-      </li>
-      <li>
-        <a class="gnav top04" href="http://kyworks.tumblr.com/">blog</a>
-    </ul>
-  </div>
+<?php get_header(); ?>
 
   <div class="wrapper">
     <div class="profile-main">
       <div class="logo">
-        <img class="logo-img" src="http://static.tumblr.com/oukifcw/212o4v2ny/kido_rogo.png" width=auto height=auto alt="KIDO">
+        <img class="logo-img" src="<?php bloginfo('template_url'); ?>img/kido_rogo.png" width=auto height=auto alt="KIDO">
       </div>
       <div class="profile-name">
         <h1 class="myname">キドユウタ / KidoYuta</h1>
@@ -61,14 +37,4 @@
     </div>
   </div>
 
-  <div class="copyright">
-    <small><p>© 2016 KidoYuta</p></small>
-  </div>
-    <a class="btnpagetop" href="" class="scroll">
-      <img class="btnpageimg" src="" alt="Topへ">
-    </a>
-
-
-</body>
-
-</html>
+<?php get_footer(); ?>

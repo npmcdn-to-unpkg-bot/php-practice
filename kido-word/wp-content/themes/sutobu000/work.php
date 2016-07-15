@@ -20,12 +20,12 @@ Template Name: work
 jQuery(document).ready(function($){
 	/*ajaxのworksのやーつ*/
 	$.ajax({
-		url:"<?php bloginfo('template_url'); ?>/js/works.json"
+		url:"<?php echo esc_url( get_template_directory_uri() ); ?>/js/works.json"
 		}).done(function(works) {
 			var htmlStr = "";
 			var worksArr = works.worksArray;
 			for(var i = 0; i < worksArr.length; i++) {
-				htmlStr += '<li style="background-image: url(<?php bloginfo('template_url') ?>/img/'+worksArr[i].img+');"><a href="' +worksArr[i].url+ '" class="worksBoxlink"><div class="worksBox"><h1>' +worksArr[i].title+ '</h1></div></a></li>';
+				htmlStr += '<li style="background-image: url(<?php echo esc_url( get_template_directory_uri() ); ?>/img/'+worksArr[i].img+');"><a href="' +worksArr[i].url+ '" class="worksBoxlink"><div class="worksBox"><h1>' +worksArr[i].title+ '</h1></div></a></li>';
 			}
 			$(".worksMain").html(htmlStr);
 		});

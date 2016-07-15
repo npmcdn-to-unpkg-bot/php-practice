@@ -7,6 +7,7 @@ register_sidebar( array(
 'after_widget' => '</div>',
 ) );
 
+add_theme_support( 'automatic-feed-links' );
 
 function load_jquery(){
     wp_enqueue_script('jquery');

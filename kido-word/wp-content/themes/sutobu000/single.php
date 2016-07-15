@@ -2,7 +2,7 @@
 
 <div class="wrapper">
 	<div class="diary-sub">
-    	<h1><a href="<?php bloginfo('url'); ?>/diary">残り人生を行き急ぐ廃人の日記</a></h1>
+    	<h1><a href="<?php echo esc_url( home_url() ); ?>/diary">残り人生を行き急ぐ廃人の日記</a></h1>
         <p>その日のぼやきを云々…</p>
     </div>
     <div class="main">
@@ -15,6 +15,14 @@
                 	<span class="post-comment-num"><?php comments_popup_link('Comment : 0', 'Comment : 1', 'Comments : %'); ?></span>
                 </p>
                 <?php the_content(); ?>
+                <?php $args = array(
+					'before' => '<div class="page-link">',
+					'after' => '</div>',
+					'link_before' => '<span>',
+					'link_after' => '</span>',
+					);
+					wp_link_pages($args);
+				?>
                 <p class="footer-post-meta">
                     <?php the_tags('Tag : ',', '); ?>
                 </p>

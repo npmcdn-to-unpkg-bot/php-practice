@@ -6,6 +6,10 @@
 </ol>
 <?php endif; ?>
 
+<div class="comment-page-link">
+<?php paginate_comments_links(); ?>
+</div>
+
 <?php $args = array(
 'title_reply' => 'Leave a Reply',
 'label_submit' => 'Submit Comment',

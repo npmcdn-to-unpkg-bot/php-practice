@@ -8,7 +8,7 @@ Template Name: diary
 
 <div class="wrapper">
 	<div class="diary-sub">
-    	<h1><a href="<?php bloginfo('url'); ?>/diary">残り人生を行き急ぐ廃人の日記</a></h1>
+    	<h1><a href="<?php echo esc_url( home_url() ); ?>/diary">残り人生を行き急ぐ廃人の日記</a></h1>
         <p>その日のぼやきを云々…</p>
     </div>
     <div class="main">

@@ -5,14 +5,14 @@ Template Name: work
 ?>
 
 <?php get_header(); ?>
-
+<div class="wrapper">
   <div class="worksSub">
     <h1>Works</h1>
     <p>click to the link</p>
   </div>
   <ul class="worksMain">
   </ul>
-
+</div>
 <?php get_footer(); ?>
 
 

@@ -14,10 +14,15 @@ html,body {
 body {
   width: 100%;
   color: #333;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Noto Sans Japanese', sans-serif;
+  font-weight:100;
   background-color: #eee;
 }
+a { text-decoration: none; }
 a, p { color: #333; }
+a:hover {
+  opacity: 0.5;
+}
 a:visited { color: #333; }
 .clearfix {
   display: block;
@@ -68,11 +73,11 @@ body:after {
 common layout
 ------------------------------------------------------------------------*/
 .header {
+  width: 400px;
   position: fixed;
-  top: 20px;
+  top: 40px;
   left: 50%;
-  margin-left:-215px;
-  padding-top: 20px;
+  margin-left:-200px;
   z-index: 999;
 }
 .topnav > li {
@@ -86,7 +91,7 @@ common layout
 }
 
 .wrapper {
-  padding: 100px 20px 20px;
+  padding: 100px 50px;
 }
 
 .copyright {
@@ -108,12 +113,9 @@ common layout
 }
 
 /*------------------------------------------------------------------------
-index layout
+top layout
 ------------------------------------------------------------------------*/
 
-.wrapper {
-  padding: 150px 20px 20px;
-}
 .title {
   text-align: center;
 }
@@ -176,7 +178,7 @@ profile layout
 ------------------------------------------------------------------------*/
 
 .logo {
-  margin: 60px 0 50px;
+  margin-bottom:50px;
   text-align: center;
 }
 .logo-img {
@@ -200,7 +202,7 @@ profile layout
   letter-spacing: 2px;
 }
 .text2 { margin:50px 0 ; }
-    {CustomCSS}
+
 
 /*------------------------------------------------------------------------
 work layout
@@ -208,7 +210,7 @@ work layout
 
 .worksSub {
   width: 35%;
-  margin: 100px auto 50px;
+  margin: 0 auto 50px;
   font-size: 100%;
   line-height: 17px;
   text-align: center;
@@ -262,13 +264,170 @@ work layout
   text-decoration: none;
 }
 
+
+/*------------------------------------------------------------------------
+index & single layout
+------------------------------------------------------------------------*/
+
+.diary-sub {
+  width: 50%;
+  margin: 0 auto 50px;
+  font-size: 100%;
+  line-height: 17px;
+  text-align: center;
+}
+.diary-sub > h1 {
+	margin-bottom: 10px;
+}
+
+.main {
+	float:left;
+	width:65%;
+	margin-bottom: 50px;
+	border-bottom: 1px solid #333;
+}
+
+.post {
+	overflow: hidden;
+    margin-bottom: 59px;
+    border-bottom: 1px solid transparent;
+}
+.posts {
+	margin: 15px auto;
+}
+.post-category,
+.post-comment-num {
+	padding-left: 10px;
+}
+
+.more-link {
+    float: right;
+}
+
+.navigation {
+    overflow: hidden;
+    margin-bottom: 40px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.navigation > div {
+    width: 50%;
+}
+.navigation .alignright {
+    text-align: right;
+}
+.alignleft {
+    float: left;
+}
+.alignright {
+    float: right;
+}
+
+.footer-post-meta {
+    margin-top: 40px;
+    text-align: right;
+}
+/*------------------------------------------------------------------------
+sidebar layout
+------------------------------------------------------------------------*/
+
+#sidebar {
+	float: right;
+	width:30%;
+	margin-bottom:60px;
+	border-bottom:1px solid transparent;
+	overflow: hidden;
+}
+
+.widget {
+    margin-bottom: 60px;
+}
+
+#sidebar h2 {
+    margin-bottom: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#sidebar .widget ul {
+    padding-left: 1.5em;
+    list-style-position: outside;
+    list-style-type: disc;
+}
+
+/*------------------------------------------------------------------------
+comments layout
+------------------------------------------------------------------------*/
+#comment-area {
+	margin: 10px 20px;
+}
+
+#comment-area h3 {
+    font-size: 150%;
+	margin-bottom: 10px;
+}
+
+.commets-list, .trackback-list {
+    overflow: hidden;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+.commets-list li, .trackback-list li {
+    overflow: hidden;
+    margin-top: -1px;
+    padding: 20px 0 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid transparent;
+}
+
+.comment-meta, .reply, .comment-notes, .form-allowed-tags, span.small {
+    font-size: 80%;
+	margin-bottom: 20px;
+}
+
+.comment-body p {
+    clear: both;
+}
+
+.reply {
+    text-align: right;
+}
+
+.children {
+    padding-left: 2em;
+}
+
+.commets-list .avatar {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#respond {
+    margin-bottom: 40px;
+}
+
+.required {
+    color: #fe56aa;
+}
+
+#comment-area input[type="text"], #comment-area textarea {
+    display: block;
+}
+
+.comment-form p {
+	margin-bottom: 20px;
+}
+
 /*------------------------------------------------------------------------
 contact layout
 ------------------------------------------------------------------------*/
 
 .contactMain {
-  width: 35%;
-  margin: 50px auto 0 ;
+  width: 50%;
+  margin: 0 auto;
+  overflow-wrap: break-word;
 }
 .contactSub {
   font-size: 100%;

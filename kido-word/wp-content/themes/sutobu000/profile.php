@@ -9,7 +9,7 @@ Template Name: profile
   <div class="wrapper">
     <div class="profile-main">
       <div class="logo">
-        <img class="logo-img" src="<?php bloginfo('template_url'); ?>img/kido_rogo.png" width=auto height=auto alt="KIDO">
+        <img class="logo-img" src="<?php bloginfo('template_url'); ?>/img/KIDO_ROGO.png" width="100%" height="100%" alt="KIDO">
       </div>
       <div class="profile-name">
         <h1 class="myname">キドユウタ / KidoYuta</h1>

@@ -19,18 +19,39 @@ if($_SESSION['oauth_token'] == $_GET['oauth_token'] and $_GET['oauth_verifier'])
 	$_SESSION['access_token'] = $access_token; //ログイン確認用
 	
 	$_SESSION['connection'] = $user_connection;
+	
+	$params = ['count' => 21];
+	
 
-	// TL情報を取得
-	$statuses = $user_connection->get('statuses/home_timeline', ['count' => '20', 'max_id' => $max_id]);
+	if(isset($_GET['max_id'])) {
+		$params['max_id'] = $_GET['max_id'];
+		
+		// TL情報を取得
+		$statuses = $user_connection->get('statuses/home_timeline', $params);
+		// 自分のツイート情報を取得
+		$user_timeline = $user_connection->get('statuses/user_timeline', $params);
+		
+		array_shift($tweets);
+		
+	} else {
+		
+		// TL情報を取得
+		$statuses = $user_connection->get('statuses/home_timeline', $params);
+		// 自分のツイート情報を取得
+		$user_timeline = $user_connection->get('statuses/user_timeline', $params);
+		
+
+	}
+	array_pop($tweets);
 	
 	$_SESSION['statuses'] = $statuses;	//json確認用
-	
-	
-	// 自分のツイート情報を取得
-	$user_timeline = $user_connection->get('statuses/user_timeline', ['count' => '20', 'max_id' => $max_id]);
-	
 	$_SESSION['user_timeline'] = $user_timeline;	//json確認用
 	
+	
+	foreach ($tweets as $tweet) {
+		echo '<li id="tweet_' . $tweet->id_str . '">' . $tweet->text . '</li>';
+	}
+		
 	header('Location: index.php');
 	exit();
 }else{

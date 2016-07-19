@@ -18,8 +18,38 @@ if(!isset($_SESSION['access_token'])){
 	} else {
 		echo 'つぶやきはありません。';
 	}
-	
-	echo "<pre>";
-	var_dump($statuses);
-	echo "</pre>";
 }
+?>
+
+<script type="text/javascript" src="jquery-1.9.1.min.js">
+
+$(function(){
+		var max_id;
+
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+			more();
+		}
+	});
+
+	function more() {
+		$("#loading").show();
+
+		if ($('#tweets > li').length) {
+			max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
+		}
+
+	console.log(max_id);
+		$.get('callback.php', {
+			max_id: max_id
+		}, function(rs) {
+			$('#loading').hide();
+			$(rs).appendTo('#tweets').hide().fadeIn(800);
+		});
+	}
+
+	more();
+	
+});
+
+</script>

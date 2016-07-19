@@ -19,11 +19,7 @@ body {
   background-color: #eee;
 }
 a { text-decoration: none; }
-a, p { color: #333; }
-a:hover {
-  opacity: 0.5;
-}
-a:visited { color: #333; }
+a, p, a:visited { color: #333; }
 .clearfix {
   display: block;
   clear: both;

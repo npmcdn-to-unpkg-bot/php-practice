@@ -29,13 +29,13 @@
         <a class="gnav top02" href="<?php echo esc_url( home_url() ); ?>/work">works</a>
       </li>
       <li>
-        <a class="gnav top02" href="<?php echo esc_url( home_url() ); ?>/diary">diary</a>
+        <a class="gnav top03" href="<?php echo esc_url( home_url() ); ?>/diary">diary</a>
       </li>
       <li>
-        <a class="gnav top03" href="<?php echo esc_url( home_url() ); ?>/contact">contact</a>
+        <a class="gnav top04" href="<?php echo esc_url( home_url() ); ?>/contact">contact</a>
       </li>
       <li>
-        <a class="gnav top04" href="http://kyworks.tumblr.com/">blog</a>
+        <a class="gnav top05" href="http://kyworks.tumblr.com/">blog</a>
       </li>
     </ul>
   </div>

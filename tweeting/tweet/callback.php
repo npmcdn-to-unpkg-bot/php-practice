@@ -21,13 +21,13 @@ if($_SESSION['oauth_token'] == $_GET['oauth_token'] and $_GET['oauth_verifier'])
 	$_SESSION['connection'] = $user_connection;
 
 	// TL情報を取得
-	$statuses = $user_connection->get('statuses/home_timeline', ['count' => '20']);
+	$statuses = $user_connection->get('statuses/home_timeline', ['count' => '20', 'max_id' => $max_id]);
 	
 	$_SESSION['statuses'] = $statuses;	//json確認用
 	
 	
 	// 自分のツイート情報を取得
-	$user_timeline = $user_connection->get('statuses/user_timeline', ['count' => '20']);
+	$user_timeline = $user_connection->get('statuses/user_timeline', ['count' => '20', 'max_id' => $max_id]);
 	
 	$_SESSION['user_timeline'] = $user_timeline;	//json確認用
 	

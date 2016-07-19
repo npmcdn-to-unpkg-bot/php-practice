@@ -12,7 +12,6 @@ session_start();
 </head>
 
 <body>
-<h1>自分のツイートを検索</h1>
 
 <form action="mypage.php" method="post">
     <input type="radio" name="radio" value="1">自分のツイート

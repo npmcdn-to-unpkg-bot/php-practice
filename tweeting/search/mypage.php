@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!doctype html>
@@ -11,7 +12,7 @@ session_start();
 </head>
 
 <body>
-
+<p><a href='logout.php'>ログアウト</a></p>
 <form action="mypage.php" method="post">
     <input type="radio" name="radio" value="1">自分のツイート
     <input type="radio" name="radio" value="2">自分のTL

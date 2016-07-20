@@ -32,4 +32,4 @@ $user = $getUser->get("account/verify_credentials");
 session_regenerate_id();
 
 //マイページへリダイレクト
-header( 'location: http://localhost/php-practice_git/tweeting/search/mypage.php' );
+header( 'location: mypage.php' );

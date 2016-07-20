@@ -39,7 +39,7 @@ if(!isset($_SESSION['access_token'])):
     </form>
 <?php 
 	if(isset($_POST['message'])){
-		$_SESSION['message'] = $_POST['mesaage'];
+		$_SESSION['message'] = $_POST['message'];
 	}
 ?>
     

@@ -12,6 +12,7 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css" />
 <script src="./jquery-1.10.1.min.js"></script>
+<script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@ if(!isset($_SESSION['access_token'])):
 ?>
 
     <div class="title page-haeder">
-        <h1>つい廃の部屋</h1>
+        <h1>部屋</h1>
     </div>
     
     <form action="." method="post">
@@ -42,59 +43,87 @@ if(!isset($_SESSION['access_token'])):
 		$_SESSION['message'] = $_POST['message'];
 	}
 ?>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">HOME</a></li>
+        <li><a href="#mytweets" data-toggle="tab">MyTweets</a></li>
+        <li><a href="#mentions" data-toggle="tab">Mentions</a></li>
+        <li><a href="#about" data-toggle="tab">About</a></li>
+    </ul>
     
+<?php
+	if(isset($_GET['page'])){
+		$_SESSION['page'] = $_GET['page'];
+	}
+?>
+
     <div class="reload">
         <a href="."><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> リロード</a>
     </div>
     
-</div>
-
-<ul id="tweets" class="home-tl media-list">
-</ul>
-
-<div class="more">
-	<p id="loading" style="display:none;">loading...</p>
-	<button type="button" id="more" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Read Tweet</button>
-</div>
+    <div class="tab-content">
+    	<div id="home" class="tab-pane active">
+        	<ul id="tweets" class="timeline media-list">
+        	</ul>
+        </div>
+        <div id="mytweets" class="tab-pane">
+        	<ul id="tweets" class="timeline media-list">
+        	</ul>
+        </div>
+        <div id="mentions" class="tab-pane">
+        	<ul id="tweets" class="timeline media-list">
+        	</ul>
+        </div>
+        <div id="about" class="tab-pane">
+        	<ul id="tweets" class="my-about media-list">
+        	</ul>
+        </div>
+	</div>
+    <div class="more">
+        <p id="loading" style="display:none;">loading...</p>
+        <button type="button" id="more" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Read Tweet</button>
+	</div>
 
 <?php endif; ?>
 
-<script>
+<script type="text/javascript">
 
 $(function() {
 
-		var max_id;
-	
-		$('#more').on('click', function() {
-			
-			more();
-			
-		});
+	var max_id;
 
-		$(window).scroll(function() {
-			if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-				more();
-			}
-		});
-	
-		function more() {
-			$("#loading").show();
-			$('#more').hide();
-	
-			if ($('#tweets > li').length) {
-				max_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
-			}
-	
-		console.log(max_id);
-			$.get('more.php', {
-				max_id: max_id
-			}, function(rs) {
-				$('#loading').hide();
-				$('#more').show();
-				$(rs).appendTo('#tweets').hide().fadeIn(800);
-			});
+	$('#more').on('click', function() {
+		
+		more();
+		
+	});
+
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+			more();
 		}
-	more();
+	});
+
+	function more() {
+
+		$("#loading").show();
+		$('#more').hide();
+
+		if ($('#tweets > li').length) {
+			newmax_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
+			if(newmax_id !== max_id) {
+				max_id = newmax_id;
+			}
+		}
+
+	console.log(max_id);
+		$.get('more.php', {
+			max_id: max_id
+		}, function(rs) {
+			$('#loading').hide();
+			$('#more').show();
+			$(rs).appendTo('#tweets').hide().fadeIn(800);
+		});
+	}
 
 });
 
@@ -128,21 +157,21 @@ body {position: relative;}
 .title h1 {margin: 0;}
 .reload {
 	position: fixed;
-	bottom: 50px;
-	right: 5px;
+	top: 110px;
+	right: 25px;
 }
 
-.home-tl {
+.timeline {
 	padding: 20px;
 }
 
-.home-tl > li {
-	margin-top: 30px;
+.timeline > li {
+	margin-top: 20px;
 	box-sizing: border-box;
 	border-radius: 10px;
 }
-.home-tl > li:first {margin-top: 0;}
-.home-tl p {color:#333;}
+.timeline > li:first {margin-top: 0;}
+.timeline p {color:#333;}
 
 .mask {padding: 10px;}
 

@@ -26,7 +26,7 @@ if(!isset($_SESSION['access_token'])):
 	echo "<p><a href='logout.php'><span class='glyphicon glyphicon-eject' aria-hidden='true'></span> ログアウト</a></p>";
 ?>
 
-    <div class="title page-haeder">
+    <div class="title page-haeder text-center center-block">
         <h1>部屋</h1>
     </div>
     
@@ -44,17 +44,11 @@ if(!isset($_SESSION['access_token'])):
 	}
 ?>
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#home" data-toggle="tab">HOME</a></li>
-        <li><a href="#mytweets" data-toggle="tab">MyTweets</a></li>
-        <li><a href="#mentions" data-toggle="tab">Mentions</a></li>
-        <li><a href="#about" data-toggle="tab">About</a></li>
+        <li class="nav-item active"><a href="#home" data-toggle="tab">HOME</a></li>
+        <li class="nav-item"><a href="#mytweets" data-toggle="tab">MyTweets</a></li>
+        <li class="nav-item"><a href="#mentions" data-toggle="tab">Mention</a></li>
+        <li class="nav-item"><a href="#about" data-toggle="tab">About</a></li>
     </ul>
-    
-<?php
-	if(isset($_GET['page'])){
-		$_SESSION['page'] = $_GET['page'];
-	}
-?>
 
     <div class="reload">
         <a href="."><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> リロード</a>
@@ -65,22 +59,22 @@ if(!isset($_SESSION['access_token'])):
         	<ul id="tweets" class="timeline media-list">
         	</ul>
         </div>
-        <div id="mytweets" class="tab-pane">
+        <div id="mytweets" class="tab-pane hidden">
         	<ul id="tweets" class="timeline media-list">
         	</ul>
         </div>
-        <div id="mentions" class="tab-pane">
+        <div id="mentions" class="tab-pane hidden">
         	<ul id="tweets" class="timeline media-list">
         	</ul>
         </div>
-        <div id="about" class="tab-pane">
-        	<ul id="tweets" class="my-about media-list">
+        <div id="about" class="tab-pane hidden">
+        	<ul id="tweets" class="timeline media-list">
         	</ul>
         </div>
 	</div>
     <div class="more">
-        <p id="loading" style="display:none;">loading...</p>
-        <button type="button" id="more" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Read Tweet</button>
+        <p id="loading" class="center-block text-center" style="display:none;">loading...</p>
+        <button type="button" id="more" class="btn btn-default center-block text-center" aria-label="Left Align"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Read Tweet</button>
 	</div>
 
 <?php endif; ?>
@@ -91,22 +85,72 @@ $(function() {
 
 	var max_id;
 
-	$('#more').on('click', function() {
+//--------------------------------------------------------
+	var timeline = '';
+	var moreBtn = '';
+	var index = 0;
+	
+	$('li.nav-item').on('click', function() {
+		$index = $('li.nav-item').index(this);
+		$.post("more.php", $('li.nav-item').index(this));
 		
+		switch($index) {
+			case(0):
+				timeline = 'home';
+				moreBtn = 'more';
+			break;
+			case(1):
+				timeline = 'mytweets';
+				moreBtn = 'mymore';
+			break;
+			case(2):
+				timeline = 'mensions';
+				moreBtn = 'menmore';
+			break;
+			case(3):
+				timeline = 'about';
+				moreBtn = 'aboutmore';
+			break;
+			default:
+				timeline = 'home';
+				moreBtn = 'more';
+			break;
+		}
+		$(".more button").attr('id', moreBtn);
+		$(".tab-content div").removeClass('active').addClass('hidden');
+		$(".tab-content div").eq($index).removeClass('hidden').addClass('active');
+		
+		$.ajax({
+			type:"POST",
+			url:"more.php",
+			data:{"index":$index}
+		});
+	});
+
+	
+//--------------------------------------------------------
+	var busy = 0;
+
+	$(".more button").on('click', function() {
 		more();
-		
 	});
 
 	$(window).scroll(function() {
 		if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+			if (busy == 1) return false;
+			
 			more();
+			
+			busy = 1;
+			setTimeout(function() { busy = 0; }, 500);
 		}
 	});
+//--------------------------------------------------------
 
 	function more() {
 
-		$("#loading").show();
-		$('#more').hide();
+		$('#loading').show();
+		$('.more button').hide();
 
 		if ($('#tweets > li').length) {
 			newmax_id = $('#tweets > li:last').attr('id').replace(/^tweet_/, '');
@@ -120,7 +164,7 @@ $(function() {
 			max_id: max_id
 		}, function(rs) {
 			$('#loading').hide();
-			$('#more').show();
+			$('.more button').show();
 			$(rs).appendTo('#tweets').hide().fadeIn(800);
 		});
 	}
@@ -133,11 +177,6 @@ $(function() {
 
 body {position: relative;}
 
-.clearfix {
-	content:"";
-	display: block;
-	clear: both;
-}
 
 .header {
 	width: 100%;
@@ -149,10 +188,7 @@ body {position: relative;}
 .header p {float: left;}
 
 .title {
-	display: block;
 	width: 250px;
-	margin: 0 auto;
-	text-align: center;
 }
 .title h1 {margin: 0;}
 .reload {
@@ -178,12 +214,7 @@ body {position: relative;}
 .more {
 	width: 100%;
 }
-.more p,
-.more button {
-	display: block;
-	margin: 0 auto;
-	text-align: center;
-}
+
 </style>
 
 </body>
